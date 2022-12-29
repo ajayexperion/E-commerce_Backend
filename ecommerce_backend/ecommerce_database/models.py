@@ -1,22 +1,27 @@
 from datetime import datetime
 from beanie import Document
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
 from typing import Optional
 from beanie import PydanticObjectId
 from bson import ObjectId
-class productReview(Document):
-    
-    name:str
-    product:str
-    rating:float
-    review:str
-    date: datetime = datetime.now()
+from ecom_app.apis.product_model import Products
 
-class Products(BaseModel):
+class productReview(Document):  
     productName:str
     description:str
     amount:int
     rating:float
+   
+   
+
+
+
+   
+
+
+
+
+
 
 # def ResponseModel(data, message):
 #     return {
@@ -24,3 +29,7 @@ class Products(BaseModel):
 #         "code": 200,
 #         "message": message,
 #     }
+
+
+# def ErrorResponseModel(error, code, message):
+#     return {"error": error, "code": code, "message": message}
