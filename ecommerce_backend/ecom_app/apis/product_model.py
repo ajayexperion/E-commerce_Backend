@@ -6,12 +6,13 @@ class Products(BaseModel):
     amount:int
     rating:float
 
-# def ResponseModel(data, message):
-#     return {
-#         "data": [data],
-#         "code": 200,
-#         "message": message,
-#     }
+class ResponseModel(BaseModel):
+   productName:str
+   description:str
+   amount:int
+   rating:float
+        
+    
 
 
 # def ErrorResponseModel(error, code, message):

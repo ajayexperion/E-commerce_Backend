@@ -19,6 +19,15 @@ async def get_products_details():
     return reviews
 
 # Function to filter
-async def get_filter_products(productName):
-    reviews=  await productReview.find(productReview.productName==productName).to_list()
+async def get_filter_products(productName,amount):
+    if productName:
+        reviews=  await productReview.find(
+            productReview.productName==
+            productName).to_list()
+    elif amount:
+        reviews=  await productReview.find(
+            productReview.amount==
+            amount).to_list()
+    else:
+        reviews = await productReview.find_all().to_list()
     return reviews
