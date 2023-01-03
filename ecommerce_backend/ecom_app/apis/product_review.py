@@ -24,9 +24,9 @@ async def get_products():
       
 # API to filter product 
 @router.get("/product/", response_description="Review records retrieved")
-async def get_product(productName:str=Header(default=None),amount:int=None)->Products:
+async def get_product(minAmount:int=None,maxAmount:int=None,productName:str=Header(default=None))->Products:
 
-    reviews=await get_filter_products(productName,amount)
+    reviews=await get_filter_products(productName,minAmount,maxAmount)
     return reviews
 
     
