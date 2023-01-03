@@ -23,16 +23,11 @@ async def get_products_details():
 async def get_filter_products(productName,minAmount,maxAmount):
 
     if (minAmount)and(maxAmount)and(productName):
-        print(minAmount)
-        print(productName)
         reviews=  await productReview.find({"productName":productName,"amount":{"$gte":minAmount,"$lte":maxAmount}}).to_list()
     elif productName:
-        reviews=  await productReview.find(
-            productReview.productName==
-            productName).to_list()
+        reviews=  await productReview.find({"productName":productName}).to_list()
     elif minAmount and maxAmount:
         reviews=  await productReview.find({"amount":{"$gte":minAmount,"$lte":maxAmount}}).to_list()
-            
     else:
         reviews = await productReview.find_all().to_list()
     return reviews
